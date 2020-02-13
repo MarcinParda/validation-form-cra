@@ -6,7 +6,22 @@ class App extends Component {
     username: "",
     email: "",
     pass: "",
-    accept: false
+    accept: false,
+
+    errors: {
+      username: false,
+      email: false,
+      pass: false,
+      accept: false
+    }
+  };
+
+  messages = {
+    username_incorrect:
+      "Nazwa musi być dłuższa niż 10 znaków i nie może zawierać spacji",
+    email_incorrect: "Brak @ w emailu",
+    password_incorrect: "Hasło musi mieć 8 znaków",
+    accept_incorrect: "Nie potwierdzona zgoda"
   };
 
   handleChange = e => {
@@ -44,6 +59,9 @@ class App extends Component {
               onChange={this.handleChange}
             />
           </label>
+          {this.state.errors.username && (
+            <span>{this.messages.username_incorrect}</span>
+          )}
 
           <label htmlFor="email">
             Twój e-mail:
@@ -55,6 +73,9 @@ class App extends Component {
               onChange={this.handleChange}
             />
           </label>
+          {this.state.errors.email && (
+            <span>{this.messages.email_incorrect}</span>
+          )}
 
           <label htmlFor="password">
             Twoje hasło:
@@ -66,6 +87,9 @@ class App extends Component {
               onChange={this.handleChange}
             />
           </label>
+          {this.state.errors.pass && (
+            <span>{this.messages.password_incorrect}</span>
+          )}
 
           <label htmlFor="accept">
             <input
@@ -77,6 +101,9 @@ class App extends Component {
             />
             Wyrażam zgodę na przetwarzanie danych
           </label>
+          {this.state.errors.accept && (
+            <span>{this.messages.accept_incorrect}</span>
+          )}
 
           <button>Zapisz się</button>
         </form>
