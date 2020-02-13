@@ -43,6 +43,30 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (true) {
+      this.setState({
+        username: "",
+        email: "",
+        pass: "",
+        accept: false,
+
+        errors: {
+          username: false,
+          email: false,
+          pass: false,
+          accept: false
+        }
+      });
+    } else {
+      this.setState({
+        errors: {
+          username: false,
+          email: false,
+          pass: false,
+          accept: false
+        }
+      });
+    }
   };
 
   render() {
